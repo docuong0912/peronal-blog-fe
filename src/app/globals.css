@@ -1,15 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fira+Code:wght@400;500&display=swap');
 @import "tailwindcss";
+
+
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --blue-200: #e1f1fe;
+  --blue-500: #93cefc;
+  --blue-700: #75b0de;
+  --blue-800: #5792c0;
+  --blue-900: #022b4a;
+
+  --green-200: #e9f5ea;
+  --green-500: #9dda49;
+  --green-700: #008531;
+  --green-900: #132a18;
+
+  --yellow-200: #fff5e1;
+  --yellow-500: #facc79;
+  --yellow-700: #ea9806;
+  --yellow-900: #4a3003;
+
+  --red-400: #f04438;
+  --red-600: #d92d20;
+
+   --neutral-0: #ffffff;
+  --neutral-100: #fbf9f7;
+  --neutral-200: #fefdeb;
+  --neutral-300: #dedcda;
+  --neutral-400: #c0bfbf;
+  --neutral-600: #444846;
+  --neutral-700: #34302d;
+  --neutral-800: #201e1d;
+  --neutral-900: #1c1a19;
+
+  --font-geist-sans: 'DM Sans', Arial, Helvetica, sans-serif;
+  --font-geist-mono: 'Fira Code', 'Courier New', Courier, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +47,114 @@
   }
 }
 
+.font-preset-1 {
+  font-family: var(--font-geist-sans);
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 130%;
+  letter-spacing: -1px;
+}
+
+.font-preset-2 {
+  font-family: var(--font-geist-sans);
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 130%;
+  letter-spacing: -0.5px;
+}
+
+/* DM Sans, Bold */
+.font-preset-3 {
+  font-family: var(--font-geist-sans);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 130%;
+  letter-spacing: -0.5px;
+}
+
+/* DM Sans, SemiBold */
+.font-preset-4 {
+  font-family: var(--font-geist-sans);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: -0.5px;
+}
+
+.font-preset-5 {
+  font-family: var(--font-geist-sans);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  letter-spacing: -0.5px;
+}
+
+/* DM Sans, Medium */
+.font-preset-6 {
+  font-family: var(--font-geist-sans);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: -0.5px;
+}
+
+/* DM Sans, Regular */
+.font-preset-7 {
+  font-family: var(--font-geist-sans);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: -0.2px;
+}
+
+/* DM Sans, SemiBold */
+.font-preset-7b {
+  font-family: var(--font-geist-sans);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: -0.2px;
+}
+
+/* DM Sans, Regular */
+.font-preset-8 {
+  font-family: var(--font-geist-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+}
+
+/* DM Sans, Italic */
+.font-preset-8i {
+  font-family: var(--font-geist-sans);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+}
+
+/* Fira Code, Regular */
+.font-preset-9 {
+  font-family: var(--font-geist-mono);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 146%;
+  letter-spacing: -0.2px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
+  box-sizing: border-box;
+}
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --neutral-300: var(--neutral-900);
+  --neutral-100: var(--neutral-900);
+  --neutral-0: var(--neutral-600);
+  /* ...other variables if needed... */
 }
