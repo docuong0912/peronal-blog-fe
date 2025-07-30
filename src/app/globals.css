@@ -156,5 +156,7 @@ body {
   --neutral-300: var(--neutral-900);
   --neutral-100: var(--neutral-900);
   --neutral-0: var(--neutral-600);
+  --neutral-800: var(--neutral-200);
+  --neutral-700: var(--neutral-600);
   /* ...other variables if needed... */
 }

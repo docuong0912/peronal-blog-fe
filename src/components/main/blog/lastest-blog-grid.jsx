@@ -13,8 +13,9 @@ export default function LastestBlogGrid() {
                 console.warn("No blogs found");
                 return;
             }
-            console.log("Latest blogs fetched:", blogData);
-            setBlogs(blogData)
+            const {blogs, meta} = blogData;
+            console.log("Latest blogs fetched:", blogs);
+            setBlogs(blogs)
         }
         catch(error) {
             console.error("Failed to fetch latest blogs:", error);

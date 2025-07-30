@@ -7,8 +7,12 @@ export default function BlogService() {
     async function getBlogsData(props) {
         return await ApiServiceService.get(`${API_ENDPOINT}/get-blogs`, props);
     }
+    async function getBlogDetailData(slug) {
+        return await ApiServiceService.get(`${API_ENDPOINT}/${ slug }`);
+    }
 
     return {
-        getBlogsData
+        getBlogsData,
+        getBlogDetailData
     };
 }

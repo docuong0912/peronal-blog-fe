@@ -6,7 +6,6 @@ async function request( options = {}) {
   const config = {
     method,
     headers,
-    cache: 'force-cache', // Use cache for GET requests
     next: { revalidate: 60 }, // Revalidate every 60 seconds
     };
     config.headers['Content-Type'] = 'application/json';
