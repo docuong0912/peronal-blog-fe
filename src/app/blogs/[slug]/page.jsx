@@ -4,33 +4,30 @@ import TableOfContent from "@/components/ui/ui-table-of-content";
 import BlogService from "@/services/BlogService.service";
 import UnderConstruction from "@/underconstrction/underconstruction";
 import { getStringDate } from "@/utils/string-helper";
+import { redirect } from 'next/navigation';
 import Link from "next/link";
 const fetchBlogDetail = async (slug) => {
     try{
         const blog = await BlogService().getBlogDetailData(slug);
-        if (!blog) {
-            throw new Error("Blog not found");
-        }
         return mapBlogData(blog);
     }
     catch (error) {
         console.error("Error fetching blog detail:", error);
-        throw new Error("Failed to fetch blog detail");
     }
     
 }
 function mapBlogData(blogData) {
     return {
         blog:{
-            ...blogData.blog,
-            content: blogData.blog.content.map(c => {
+            ...blogData?.blog,
+            content: blogData?.blog.content.map(c => {
                 return{
                     ...c,
                     text: c.children[0].text
                 }
             })
         },
-        relatedBlogs: blogData.relatedBlogs
+        relatedBlogs: blogData?.relatedBlogs
 
     }
 }
@@ -42,7 +39,7 @@ export default async function BlogDetail({ params }) {
             <h1 className="text-3xl font-bold">{blog.title}</h1>
             <div className="flex flex-col gap-6 mt-2 text-neutral-600">
                 <p className="italic">Published {getStringDate(blog.createdDate)}</p>
-                {blog.content.map((content, index) => (
+                {blog?.content.map((content, index) => (
                     <span id={content.text} key={index} className={`${!index ? " border-b-2 pb-6 border-[var(--neutral-700)]" : content.type === "heading" ? "font-bold !text-2xl" : ""} text-md text-[var(--neutral-800)] leading-7`}>
                         {content.text}
                     </span>
