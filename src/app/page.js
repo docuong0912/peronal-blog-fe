@@ -1,4 +1,5 @@
 import LastestBlogGrid from "@/components/main/blog/lastest-blog-grid";
+import PageLayout from "@/components/main/page-share-layout";
 import SocialMedias from "@/components/main/social-medias";
 import PageService from "@/services/PageService.service";
 import DOMPurify from 'dompurify';
@@ -25,12 +26,15 @@ export default async function Home() {
   const data = await fetchPageData();
   const { pageTitle, pageContent } = mappingPageData(data);
   return (
-    <>
+    <PageLayout center={
+       <>
         <div dangerouslySetInnerHTML={{__html: pageTitle}} className="text-xl lg:text-3xl text-center font-bold text-foreground"/>
         <div dangerouslySetInnerHTML={{__html: pageContent}} className="text-center lg:text-start text-lg text-foreground leading-7"/>
         <SocialMedias/>
         <LastestBlogGrid/>
-    </>
+      </>
+    }/>
+   
        
       
   );

@@ -1,9 +1,10 @@
-export default function PageContent({ children }) {
+import TableOfContent from "../ui/ui-table-of-content";
+
+export default async function PageContent({ children }) {
+    
     return (
-        <div className="items-center justify-items-center min-h-screen ">
-            <main className="flex flex-col gap-[32px] items-center sm:items-start border border-[var(--neutral-0)] p-6 bg-[var(--neutral-100)] shadow-sm w-full max-w-3xl">
-                {children}
-            </main>
+        <div className=" lg:grid lg:grid-cols-5 min-h-screen lg:gap-14 ">
+            {children}
         </div>
     );
 }
