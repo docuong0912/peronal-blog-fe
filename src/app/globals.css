@@ -160,3 +160,6 @@ body {
   --neutral-700: var(--neutral-600);
   /* ...other variables if needed... */
 }
+.toc{
+  word-wrap: break-word !important;
+}

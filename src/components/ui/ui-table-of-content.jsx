@@ -13,7 +13,7 @@ export default function TableOfContent({headings}){
           const { top } = el.getBoundingClientRect();
           
         
-          if (top <= 300) {
+          if (top <= 300 && top >=300) {
             current = heading.text;
           }
         }
@@ -27,7 +27,7 @@ export default function TableOfContent({headings}){
   }, [headings]);
 
   return (
-    <nav className="w-40 hidden lg:block fixed top-20 left-8 text-sm text-[var(--neutral-800)]">
+    <nav className="w-40 hidden lg:block fixed top-20 left-8 text-sm text-[var(--neutral-800)] max-h-3/4 overflow-y-scroll">
     <p>On this page</p>
       <ul className="relative space-y-2 border-l-1 border-neutral-700 mt-2">
         {headings.map((heading, index) => {
