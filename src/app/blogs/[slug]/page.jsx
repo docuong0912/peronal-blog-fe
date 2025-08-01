@@ -6,6 +6,7 @@ import UnderConstruction from "@/underconstrction/underconstruction";
 import { getStringDate } from "@/utils/string-helper";
 import { redirect } from 'next/navigation';
 import Link from "next/link";
+import BlogTag from "@/components/main/blog/blog-tags";
 const fetchBlogDetail = async (slug) => {
     try{
         const blog = await BlogService().getBlogDetailData(slug);
@@ -39,7 +40,7 @@ export default async function BlogDetail({ params }) {
     const slug = (await params).slug
     const {blog, relatedBlogs} = await fetchBlogDetail(slug);
     const mainContent = (
-    <div className="w-full h-full lg:pb-30">   
+    <div className="w-full h-full lg:pb-20">   
             <h1 className="text-3xl font-bold">{blog.title}</h1>
             <div className="flex flex-col gap-6 mt-2 text-neutral-600">
                 <p className="italic">Published {getStringDate(blog.createdDate)}</p>
@@ -61,7 +62,7 @@ export default async function BlogDetail({ params }) {
                     </span>
                 ))}
             </div>
-            
+         <BlogTag tags={blog.seoKeyword.split(",")}/>   
         </div>
     )
     const relatedArticles = (
@@ -81,6 +82,9 @@ export default async function BlogDetail({ params }) {
     );
 
     return (
-        <PageLayout left={<TableOfContent headings={blog.content.filter(c => c.typeChild === "heading")}/>} center={mainContent} end={relatedArticles} />
+        <>
+            <PageLayout left={<TableOfContent headings={blog.content.filter(c => c.typeChild === "heading")}/>} center={mainContent} end={relatedArticles} />
+            
+        </>
     );
 }

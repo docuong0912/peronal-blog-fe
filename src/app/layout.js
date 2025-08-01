@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "@/components/lib/fontawesome-icon";
 import PageContent from "@/components/main/page-content";
 import TableOfContent from "@/components/ui/ui-table-of-content";
+import MainFooter from "@/components/main/main-footer";
 
 const geistSans = DM_Sans({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default async function RootLayout({ children }) {
         <PageContent>
         {children}
         </PageContent>
+        <MainFooter/>
       </body>
     </html>
   );
