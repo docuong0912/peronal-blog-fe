@@ -22,8 +22,9 @@ function mapBlogData(blogData) {
             ...blogData?.blog,
             content: blogData?.blog.content.map(c => {
                 return{
-                    ...c,
-                    text: c.children[0].text
+                    code: c.children[0].code || false,
+                    type: c.children[0].type,
+                    text: c.type === "list" ? c.children.map(content => content.children[0].text) : [c.children[0].text]
                 }
             })
         },
@@ -41,7 +42,19 @@ export default async function BlogDetail({ params }) {
                 <p className="italic">Published {getStringDate(blog.createdDate)}</p>
                 {blog?.content.map((content, index) => (
                     <span id={content.text} key={index} className={`${!index ? " border-b-2 pb-6 border-[var(--neutral-700)]" : content.type === "heading" ? "font-bold !text-2xl" : ""} text-md text-[var(--neutral-800)] leading-7`}>
-                        {content.text}
+                        {
+                            content.text.length === 1 ?
+                            content.code ? <code> {content.text[0]} </code> : content.text[0] :
+                            <ul className="list-disc">
+                                {
+                                    content.text.map((txt,k) => {
+                                        return <li className="ml-2" key={k}>{txt}</li>
+                                    })
+                                }
+                            </ul>
+                            
+                        }
+                        
                     </span>
                 ))}
             </div>
