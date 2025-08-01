@@ -27,13 +27,18 @@ export default function TableOfContent({headings}){
   }, [headings]);
 
   return (
-    <nav className="hidden lg:block fixed top-20 left-8 text-sm text-[var(--neutral-800)]">
+    <nav className="w-40 hidden lg:block fixed top-20 left-8 text-sm text-[var(--neutral-800)]">
     <p>On this page</p>
       <ul className="relative space-y-2 border-l-1 border-neutral-700 mt-2">
         {headings.map((heading, index) => {
           const isActive = heading.text === activeId;
+          const indentClass = {
+            1: 'pl-3',
+            2: 'pl-6',
+            3: 'pl-9',
+            }[heading.level] || 'pl-4';
           return (
-            <li key={index} className={`${isActive ? "border-l-2" : ""}  relative  pl-4 indent-${Number(heading.level) * 3} border-[var(--blue-800)]`}>
+            <li key={index} className={`${isActive ? "border-l-2" : ""}  relative ${indentClass} border-[var(--blue-800)]`}>
               <a
                 href={`#${heading.text}`}
                 className={`block transition-colors ${

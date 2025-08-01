@@ -22,6 +22,7 @@ function mapBlogData(blogData) {
             ...blogData?.blog,
             content: blogData?.blog.content.map(c => {
                 return{
+                    level: c.level || 0,
                     codeParent: c.children[0].code || false,
                     typeParent: c.children[0].type,
                     codeChild: c.code || false,
