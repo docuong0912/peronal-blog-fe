@@ -4,27 +4,7 @@ import { getStringDate } from "@/utils/string-helper";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function LastestBlogGrid() {
-    const [blogs, setBlogs] = useState([]);
-    const getLatestBlogs = async() => {
-        try{
-            const blogData = await BlogService().getBlogsData({pageNumber: 1, pageSize: 5});
-            if(!blogData || !blogData || blogData.length === 0) {
-                console.warn("No blogs found");
-                return;
-            }
-            const {blogs, meta} = blogData;
-            console.log("Latest blogs fetched:", blogs);
-            setBlogs(blogs)
-        }
-        catch(error) {
-            console.error("Failed to fetch latest blogs:", error);
-        }
-        
-    }
-    useEffect(() => {
-        getLatestBlogs();
-    }, []);
+export default function LastestBlogGrid({blogs}) {
     return (
         <section className="border-t border-[var(--neutral-300)] w-full pt-6">
             <h2 className="text-3xl font-bold font-sans">Latest Articles</h2>
