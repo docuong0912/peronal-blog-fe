@@ -66,8 +66,8 @@ export default async function BlogDetail({ params }) {
         </div>
     )
     const relatedArticles = (
-        <div className="fixed flex flex-col gap-6 p-6 bg-white rounded-lg shadow-lg max-w-full border border-gray-200">
-  <h1 className="text-xl font-semibold text-gray-800 border-b pb-2">Related Articles</h1>
+        <div className="fixed flex flex-col gap-6 p-6 bg-[var(--neuutral-100)] rounded-lg shadow-lg max-w-full border border-gray-200">
+  <h1 className="text-xl font-semibold text-[var(--neuutral-800)] border-b pb-2">Related Articles</h1>
 
   {relatedBlogs.map((blog, index) => (
     <Link
