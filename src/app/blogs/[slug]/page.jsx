@@ -66,19 +66,24 @@ export default async function BlogDetail({ params }) {
         </div>
     )
     const relatedArticles = (
-        <div className="flex flex-col gap-10 fixed">
-            <h1 className="text-xl font-bold">Related Articles</h1>
-            {relatedBlogs.map((blog, index) => (
-            <Link
-                key={blog.slug || index}
-                href={`${blog.slug}`}
-                className=" hover:underline"
-            >
-                <p className="text-md font-bold">{blog.title}</p>
-                <p className="text-[var(--neutral-700)]">{getStringDate(blog.createdDate)}</p>
-            </Link>
-            ))}
-        </div>
+        <div className="fixed flex flex-col gap-6 p-6 bg-white rounded-lg shadow-lg max-w-full border border-gray-200">
+  <h1 className="text-xl font-semibold text-gray-800 border-b pb-2">Related Articles</h1>
+
+  {relatedBlogs.map((blog, index) => (
+    <Link
+      key={blog.slug || index}
+      href={`${blog.slug}`}
+      className="group"
+    >
+      <div className="mb-2">
+        <p className="text-md font-semibold text-blue-600 group-hover:underline transition">
+          {blog.title}
+        </p>
+        <p className="text-sm text-gray-500">{getStringDate(blog.createdDate)}</p>
+      </div>
+    </Link>
+  ))}
+</div>
     );
 
     return (
