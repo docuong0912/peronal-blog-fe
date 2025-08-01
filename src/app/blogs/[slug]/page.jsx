@@ -22,8 +22,10 @@ function mapBlogData(blogData) {
             ...blogData?.blog,
             content: blogData?.blog.content.map(c => {
                 return{
-                    code: c.children[0].code || false,
-                    type: c.children[0].type,
+                    codeParent: c.children[0].code || false,
+                    typeParent: c.children[0].type,
+                    codeChild: c.code || false,
+                    typeChild: c.type,
                     text: c.type === "list" ? c.children.map(content => content.children[0].text) : [c.children[0].text]
                 }
             })
@@ -41,10 +43,10 @@ export default async function BlogDetail({ params }) {
             <div className="flex flex-col gap-6 mt-2 text-neutral-600">
                 <p className="italic">Published {getStringDate(blog.createdDate)}</p>
                 {blog?.content.map((content, index) => (
-                    <span id={content.text} key={index} className={`${!index ? " border-b-2 pb-6 border-[var(--neutral-700)]" : content.type === "heading" ? "font-bold !text-2xl" : ""} text-md text-[var(--neutral-800)] leading-7`}>
+                    <span id={content.text} key={index} className={`${!index ? " border-b-2 pb-6 border-[var(--neutral-700)]" : content.typeChild === "heading" ? "font-bold !text-2xl" : ""} text-md text-[var(--neutral-800)] leading-7`}>
                         {
                             content.text.length === 1 ?
-                            content.code ? <code> {content.text[0]} </code> : content.text[0] :
+                            content.codeParent ? <code> {content.text[0]} </code> : content.text[0] :
                             <ul className="list-disc">
                                 {
                                     content.text.map((txt,k) => {
@@ -78,6 +80,6 @@ export default async function BlogDetail({ params }) {
     );
 
     return (
-        <PageLayout left={<TableOfContent headings={blog.content.filter(c => c.type === "heading")}/>} center={mainContent} end={relatedArticles} />
+        <PageLayout left={<TableOfContent headings={blog.content.filter(c => c.typeChild === "heading")}/>} center={mainContent} end={relatedArticles} />
     );
 }
