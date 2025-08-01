@@ -13,7 +13,7 @@ export default function TableOfContent({headings}){
           const { top } = el.getBoundingClientRect();
           
         
-          if (top <= 300 && top >=300) {
+          if (top <= 300) {
             current = heading.text;
           }
         }
